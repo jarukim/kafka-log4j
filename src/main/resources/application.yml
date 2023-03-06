@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+    topic: mydata
+
+custom:
+  partition-idx: 0
+
+logging:
+  level:
+    root: info
+  config: classpath:log4j.xml

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="layoutPattern">%d{yyyy/MM/dd HH:mm:ss,SSS} [%-5p] [%-70C] %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console_Appender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${layoutPattern}"/>
+        </Console>
+        <Kafka name="Kafka" topic="mydata">
+            <PatternLayout pattern="%date %level %message"/>
+            <Property name="bootstrap.servers">localhost:29092</Property>
+        </Kafka>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO" additivity="false">
+            <AppenderRef ref="Console_Appender"/>
+            <AppenderRef ref="Kafka"/>
+        </Root>
+    </Loggers>
+</Configuration>
